@@ -62,8 +62,8 @@ class _TicketWidgetState extends State<TicketWidget> {
                           maxLines: 1,
                           style: Theme.of(context).textTheme.bodyMedium!
                               .copyWith(
-                            color: AppColors.pTextColor.withOpacity(.7),
-                          ),
+                                color: AppColors.pTextColor.withOpacity(.7),
+                              ),
                         ),
                       ],
                     ),
@@ -118,16 +118,18 @@ class _TicketWidgetState extends State<TicketWidget> {
                   ],
                 ),
               ),
-
-              CustomTextButton(
-                backgroundColor: Color(0xFF121212),
-                borderRadius: 30,
-                padding: EdgeInsets.all(8),
-                text: "Premium ticket x1",
-                onPressed: () {},
-                textStyle: Theme.of(
-                  context,
-                ).textTheme.bodyMedium!.copyWith(fontSize: 12),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+                decoration: BoxDecoration(
+                  color: AppColors.bgColor,
+                  borderRadius: BorderRadius.circular(25)
+                ),
+                child: CustomText(
+                  text: "Premium ticket x1",
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium!.copyWith(fontSize: 12),
+                ),
               ),
             ],
           ),
