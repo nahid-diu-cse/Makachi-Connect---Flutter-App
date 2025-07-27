@@ -80,13 +80,12 @@ class MyApp extends StatelessWidget {
               bodyLarge: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.normal,
-                // color: AppColors.textPrimary,
-                height: 1.5,
+                color: AppColors.pTextColor,
               ),
               bodyMedium: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.normal,
-                // color: AppColors.textSecondary,
+                color: AppColors.pTextColor,
                 height: 1.4,
               ),
               bodySmall: TextStyle(
@@ -97,7 +96,7 @@ class MyApp extends StatelessWidget {
               labelLarge: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.bold,
-                // color: AppColors.buttonTextColor,
+                color: AppColors.pTextColor,
                 height: 1.4,
               ),
               labelMedium: TextStyle(

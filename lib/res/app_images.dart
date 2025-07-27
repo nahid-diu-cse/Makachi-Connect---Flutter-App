@@ -6,4 +6,5 @@ class AppImages {
   static final String welcomeBg = "assets/images/welcome_bg.png";
   static final String dot = "assets/images/dot.png";
   static final String bgImage = "assets/images/bg_image.png";
+  static final String ticketCard = "assets/images/ticket_card.png";
 }
