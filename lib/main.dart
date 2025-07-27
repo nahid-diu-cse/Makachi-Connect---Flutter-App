@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
                 height: 1.4,
               ),
               bodySmall: TextStyle(
-                fontSize: 10.sp,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.sTextColor,
               ),
