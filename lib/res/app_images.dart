@@ -10,4 +10,7 @@ class AppImages {
   static final String ticketCard = "assets/images/ticket_card.png";
   static final String venue = "assets/images/venue.jpg";
   static final String event = "assets/images/event.jpg";
+
+  //svg images
+  static final String locationFrame = "assets/images_svg/location_frame.svg";
 }

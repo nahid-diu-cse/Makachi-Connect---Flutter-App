@@ -14,6 +14,7 @@ import 'package:makachi_connect/res/components/ellipsis_scaffold.dart';
 import 'package:makachi_connect/res/enum/enum.dart';
 import 'package:makachi_connect/view/auth_view/forget_pass_view.dart';
 import 'package:makachi_connect/view/auth_view/sign_up_view.dart';
+import 'package:makachi_connect/view/home_view/enable_location_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -89,8 +90,9 @@ class _LoginViewState extends State<LoginView> {
                   isPassword: true,
                   prefixIcon: Icons.lock_outline,
                   validator: (value) {
-                    if (value == null || value.isEmpty)
+                    if (value == null || value.isEmpty) {
                       return "Password required";
+                    }
                     if (value.length < 6) return "Minimum 6 characters";
                     return null;
                   },
@@ -119,7 +121,13 @@ class _LoginViewState extends State<LoginView> {
                   ],
                 ),
                 SizedBox(height: 20),
-                CustomButton(onPressed: () {}, text: "Login", width: width),
+                CustomButton(
+                  onPressed: () {
+                    Get.to(() => EnableLocationView());
+                  },
+                  text: "Login",
+                  width: width,
+                ),
               ],
             ),
             CustomDividerText(
@@ -156,7 +164,7 @@ class _LoginViewState extends State<LoginView> {
                     CustomTextButton(
                       text: "Sign Up",
                       onPressed: () {
-                        Get.to(()=>SignUpView());
+                        Get.to(() => SignUpView());
                       },
                       textStyle: Theme.of(context).textTheme.bodyMedium!
                           .copyWith(color: AppColors.primaryColor),
