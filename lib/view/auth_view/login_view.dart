@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:makachi_connect/res/app_colors.dart';
 import 'package:makachi_connect/res/app_icons.dart';
 import 'package:makachi_connect/res/app_images.dart';
@@ -11,6 +12,8 @@ import 'package:makachi_connect/res/components/custom_input_field.dart';
 import 'package:makachi_connect/res/components/custom_text.dart';
 import 'package:makachi_connect/res/components/ellipsis_scaffold.dart';
 import 'package:makachi_connect/res/enum/enum.dart';
+import 'package:makachi_connect/view/auth_view/forget_pass_view.dart';
+import 'package:makachi_connect/view/auth_view/sign_up_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -33,7 +36,6 @@ class _LoginViewState extends State<LoginView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
             Column(
               children: [
                 Align(
@@ -110,7 +112,7 @@ class _LoginViewState extends State<LoginView> {
                     CustomTextButton(
                       padding: EdgeInsets.all(0),
                       text: "Forgot Password?",
-                      onPressed: () {},
+                      onPressed: () => Get.to(() => ForgetPassView()),
                       textStyle: Theme.of(context).textTheme.bodyMedium!
                           .copyWith(color: AppColors.primaryColor),
                     ),
@@ -153,7 +155,9 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     CustomTextButton(
                       text: "Sign Up",
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=>SignUpView());
+                      },
                       textStyle: Theme.of(context).textTheme.bodyMedium!
                           .copyWith(color: AppColors.primaryColor),
                     ),

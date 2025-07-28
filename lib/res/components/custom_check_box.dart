@@ -18,7 +18,7 @@ class CustomCheckBox extends StatelessWidget {
     required this.isChecked,
     required this.onChanged,
     this.label,
-    this.activeColor = Colors.blue,
+    this.activeColor = Colors.transparent,
     this.borderColor = Colors.grey,
     this.size = 24.0,
     this.borderRadius = 6.0,
@@ -42,18 +42,11 @@ class CustomCheckBox extends StatelessWidget {
             decoration: BoxDecoration(
               color: isChecked ? activeColor : Colors.transparent,
               borderRadius: BorderRadius.circular(borderRadius),
-              border: Border.all(
-                color: borderColor,
-                width: 2,
-              ),
+              border: Border.all(color: borderColor, width: 2),
             ),
             child: Center(
               child: isChecked
-                  ? Icon(
-                checkIcon,
-                size: iconSize,
-                color: Colors.white,
-              )
+                  ? Icon(checkIcon, size: iconSize, color: Colors.white)
                   : null,
             ),
           ),

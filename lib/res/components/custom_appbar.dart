@@ -18,8 +18,9 @@ class CustomAppbar extends StatelessWidget {
       child: Container(
         width: width,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 12),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Back button on the left
               GestureDetector(

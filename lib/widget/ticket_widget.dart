@@ -30,6 +30,7 @@ class _TicketWidgetState extends State<TicketWidget> {
           image: AssetImage(AppImages.ticketCard),
           fit: BoxFit.cover,
         ),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,53 +77,49 @@ class _TicketWidgetState extends State<TicketWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText(
-                      text: "Time",
-                      maxLines: 1,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: AppColors.pTextColor.withOpacity(.7),
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: "Time",
+                    maxLines: 1,
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: AppColors.pTextColor.withOpacity(.7),
                     ),
-                    CustomText(
-                      maxLines: 1,
-                      text: "10:00 PM",
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodyMedium!.copyWith(fontSize: 12),
-                    ),
-                  ],
-                ),
+                  ),
+                  CustomText(
+                    maxLines: 1,
+                    text: "10:00 PM",
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium!.copyWith(fontSize: 12),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText(
-                      text: "Location",
-                      maxLines: 1,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: AppColors.pTextColor.withOpacity(.7),
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: "Location",
+                    maxLines: 1,
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: AppColors.pTextColor.withOpacity(.7),
                     ),
-                    CustomText(
-                      text: "California, CA",
-                      maxLines: 1,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodyMedium!.copyWith(fontSize: 12),
-                    ),
-                  ],
-                ),
+                  ),
+                  CustomText(
+                    text: "California, CA",
+                    maxLines: 1,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium!.copyWith(fontSize: 12),
+                  ),
+                ],
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
                   color: AppColors.bgColor,
-                  borderRadius: BorderRadius.circular(25)
+                  borderRadius: BorderRadius.circular(25),
                 ),
                 child: CustomText(
                   text: "Premium ticket x1",

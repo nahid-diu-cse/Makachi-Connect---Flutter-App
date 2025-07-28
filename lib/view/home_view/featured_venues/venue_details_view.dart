@@ -12,6 +12,7 @@ import 'package:makachi_connect/res/components/custom_blur_bg_container.dart';
 import 'package:makachi_connect/res/components/custom_network_image.dart';
 import 'package:makachi_connect/res/components/custom_rating_bar.dart';
 import 'package:makachi_connect/res/components/custom_text.dart';
+import 'package:makachi_connect/widget/address_widget.dart';
 
 import '../../../res/app_images.dart';
 
@@ -196,64 +197,7 @@ class _VenueDetailsViewState extends State<VenueDetailsView> {
                     textAlign: TextAlign.justify,
                   ),
                   divider(),
-                  labelText("Address"),
-                  Stack(
-                    children: [
-                      Container(
-                        height: height * .2,
-                        width: width,
-                        decoration: BoxDecoration(
-                          color: AppColors.whiteColor.withOpacity(.05),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          width: width,
-                          decoration: BoxDecoration(
-                            color: AppColors.whiteColor.withOpacity(.05),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                children: [
-                                  SvgPicture.asset(
-                                    AppIcons.locationSvg,
-                                    height: 20,
-                                    width: 20,
-                                  ),
-                                  CustomText(
-                                    text: "Location",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                          color: AppColors.pTextColor
-                                              .withOpacity(.84),
-                                        ),
-                                  ),
-                                ],
-                              ),
-                              CustomText(
-                                text: "44A Street, California, USA",
-                                style: Theme.of(context).textTheme.bodySmall!
-                                    .copyWith(
-                                      color: AppColors.pTextColor.withOpacity(
-                                        .6,
-                                      ),
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  AddressWidget(),
                   divider(),
                   labelText("User’s feedback"),
                   feedback(

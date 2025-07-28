@@ -12,7 +12,11 @@ import 'package:makachi_connect/res/components/custom_network_image.dart';
 import 'package:makachi_connect/res/components/custom_search_bar.dart';
 import 'package:makachi_connect/res/components/custom_text.dart';
 import 'package:makachi_connect/res/components/ellipsis_scaffold.dart';
+import 'package:makachi_connect/view/home_view/featured_events/events_view.dart';
 import 'package:makachi_connect/view/home_view/featured_venues/venue_details_view.dart';
+import 'package:makachi_connect/view/home_view/featured_venues/venues_view.dart';
+import 'package:makachi_connect/view/home_view/tickets/featured_tickets_view.dart';
+import 'package:makachi_connect/view/home_view/tickets/ticket_details_view.dart';
 import 'package:makachi_connect/widget/ticket_widget.dart';
 import 'package:makachi_connect/widget/venue_widget.dart';
 
@@ -134,9 +138,19 @@ class _HomeViewState extends State<HomeView> {
                     ),
                     Row(
                       children: [
-                        Expanded(child: categoryWidget("Venue")),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => Get.to(() => VenuesView()),
+                            child: categoryWidget("Venue", AppImages.venue),
+                          ),
+                        ),
                         SizedBox(width: 10),
-                        Expanded(child: categoryWidget("Event")),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => Get.to(() => EventsView()),
+                            child: categoryWidget("Event", AppImages.event),
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(height: 8),
@@ -149,7 +163,7 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         CustomTextButton(
                           text: "View All",
-                          onPressed: () {},
+                          onPressed: () => Get.to(() => FeaturedTicketsView()),
                           textStyle: Theme.of(context).textTheme.titleSmall
                               ?.copyWith(color: AppColors.primaryColor),
                         ),
@@ -164,7 +178,10 @@ class _HomeViewState extends State<HomeView> {
                             padding: EdgeInsets.only(
                               right: index == 4 ? 0 : 12.w,
                             ),
-                            child: TicketWidget(),
+                            child: GestureDetector(
+                              onTap: () => Get.to(() => TicketDetailsView()),
+                              child: TicketWidget(),
+                            ),
                           ),
                         ),
                       ),
@@ -183,18 +200,19 @@ class _HomeViewState extends State<HomeView> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
-      width: width * .6,
       height: height * .1,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       child: Stack(
         children: [
-          // CustomNetworkImage(
-          //   imageUrl: "imageUrl",
-          //   width: width * .6,
-          //   height: height * .1,
-          //   borderRadius: BorderRadius.circular(15),
-          // ),
-          Image.asset(imgUrl, width: width * .6, height: height * .1),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.asset(
+              imgUrl,
+              width: width,
+              height: height,
+              fit: BoxFit.cover,
+            ),
+          ),
           CustomBlurBgContainer(
             blurSigma: 1,
             width: width,
