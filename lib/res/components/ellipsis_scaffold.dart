@@ -15,13 +15,9 @@ class EllipsisScaffold extends StatelessWidget {
       body: Stack(
         children: [
           SizedBox.expand(
-            child: Image.asset(
-              AppImages.bgImage,
-              fit: BoxFit
-                  .cover,
-            ),
+            child: Image.asset(AppImages.bgImage, fit: BoxFit.cover),
           ),
-          body,
+          SafeArea(child: body),
         ],
       ),
     );

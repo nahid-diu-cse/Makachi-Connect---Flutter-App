@@ -1,5 +1,6 @@
 enum ImageType{
   asset,
   network,
-  file
+  file,
+  svg
 }

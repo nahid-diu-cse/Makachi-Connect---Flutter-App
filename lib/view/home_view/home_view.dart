@@ -132,19 +132,12 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       ],
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(
-                          5,
-                          (index) => Padding(
-                            padding: EdgeInsets.only(
-                              right: index == 4 ? 0 : 12.w,
-                            ),
-                            child: categoryWidget(),
-                          ),
-                        ),
-                      ),
+                    Row(
+                      children: [
+                        Expanded(child: categoryWidget("Venue")),
+                        SizedBox(width: 10),
+                        Expanded(child: categoryWidget("Event")),
+                      ],
                     ),
                     SizedBox(height: 8),
                     Row(
@@ -186,7 +179,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  Widget categoryWidget() {
+  Widget categoryWidget(String txt, String imgUrl) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
@@ -195,22 +188,23 @@ class _HomeViewState extends State<HomeView> {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       child: Stack(
         children: [
-          CustomNetworkImage(
-            imageUrl: "imageUrl",
-            width: width * .6,
-            height: height * .1,
-            borderRadius: BorderRadius.circular(15),
-          ),
+          // CustomNetworkImage(
+          //   imageUrl: "imageUrl",
+          //   width: width * .6,
+          //   height: height * .1,
+          //   borderRadius: BorderRadius.circular(15),
+          // ),
+          Image.asset(imgUrl, width: width * .6, height: height * .1),
           CustomBlurBgContainer(
             blurSigma: 1,
             width: width,
             padding: EdgeInsets.all(10),
             body: Center(
               child: CustomText(
-                text: "Venue",
+                text: txt,
                 style: Theme.of(
                   context,
-                ).textTheme.titleLarge!.copyWith(color: AppColors.pTextColor),
+                ).textTheme.titleMedium!.copyWith(color: AppColors.pTextColor),
               ),
             ),
           ),
@@ -218,6 +212,4 @@ class _HomeViewState extends State<HomeView> {
       ),
     );
   }
-
-
 }

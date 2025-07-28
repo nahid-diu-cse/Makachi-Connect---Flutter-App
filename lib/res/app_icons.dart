@@ -10,6 +10,8 @@ class AppIcons {
   static final String arrowBackSvg = "assets/icons_svg/arrow_back.svg";
   static final String calendar30x30Svg = "assets/icons_svg/calendar30x30.svg";
   static final String location30x30Svg = "assets/icons_svg/location30x30.svg";
+  static final String googleSvg = "assets/icons_svg/google.svg";
+  static final String appleSvg = "assets/icons_svg/apple.svg";
 
   static final String searchBarIcon = "assets/icons_png/search_bar_icon.png";
   static final String heartIcon = "assets/icons_png/heart.png";

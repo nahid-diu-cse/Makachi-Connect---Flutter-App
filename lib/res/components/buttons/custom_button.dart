@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:makachi_connect/res/app_paddings.dart';
 import 'package:makachi_connect/res/components/custom_text.dart';
 
@@ -54,6 +55,13 @@ class CustomButton extends StatelessWidget {
     switch (imageType) {
       case ImageType.asset:
         return Image.asset(
+          imagePath!,
+          width: fontSize.sp + 6,
+          height: fontSize.sp + 6,
+          fit: BoxFit.contain,
+        );
+      case ImageType.svg:
+        return SvgPicture.asset(
           imagePath!,
           width: fontSize.sp + 6,
           height: fontSize.sp + 6,
