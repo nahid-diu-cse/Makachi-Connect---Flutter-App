@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:makachi_connect/res/app_colors.dart';
 import 'package:makachi_connect/res/components/custom_text.dart';
 
 class CustomInputField extends StatefulWidget {

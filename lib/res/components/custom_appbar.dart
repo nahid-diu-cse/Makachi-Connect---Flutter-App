@@ -8,8 +8,14 @@ import 'package:makachi_connect/res/components/custom_text.dart';
 class CustomAppbar extends StatelessWidget {
   final String? title;
   final Widget? action;
+  final bool? isLeading;
 
-  const CustomAppbar({super.key, this.title, this.action});
+  const CustomAppbar({
+    super.key,
+    this.title,
+    this.action,
+    this.isLeading = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +24,17 @@ class CustomAppbar extends StatelessWidget {
       child: Container(
         width: width,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Back button on the left
-              GestureDetector(
-                onTap: () => Get.back(),
-                child: SvgPicture.asset(AppIcons.arrowBackSvg),
-              ),
+              isLeading == true
+                  ? GestureDetector(
+                      onTap: () => Get.back(),
+                      child: SvgPicture.asset(AppIcons.arrowBackSvg),
+                    )
+                  : Container(),
               // Expanded widget to center the title
               Expanded(
                 child: Center(

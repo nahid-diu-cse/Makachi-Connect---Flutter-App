@@ -12,6 +12,13 @@ class AppIcons {
   static final String location30x30Svg = "assets/icons_svg/location30x30.svg";
   static final String googleSvg = "assets/icons_svg/google.svg";
   static final String appleSvg = "assets/icons_svg/apple.svg";
+  static final String arrowRight = "assets/icons_svg/arrow_right.svg";
+  static final String key = "assets/icons_svg/key.svg";
+  static final String notification = "assets/icons_svg/notification.svg";
+  static final String privacy = "assets/icons_svg/privacy.svg";
+  static final String terms = "assets/icons_svg/terms.svg";
+  static final String user = "assets/icons_svg/user.svg";
+  static final String about = "assets/icons_svg/about.svg";
 
   static final String searchBarIcon = "assets/icons_png/search_bar_icon.png";
   static final String heartIcon = "assets/icons_png/heart.png";

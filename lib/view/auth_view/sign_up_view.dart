@@ -221,7 +221,7 @@ class _SignUpViewState extends State<SignUpView> {
           },
           label: "User",
         ),
-        SizedBox(width: 50),
+        SizedBox(width: 20),
         CustomCheckBox(
           borderRadius: 50,
 
