@@ -53,7 +53,9 @@ class _CustomInputFieldState extends State<CustomInputField> {
             padding: const EdgeInsets.only(bottom: 8.0),
             child: CustomText(
               text: widget.label,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: AppColors.pTextColor.withOpacity(.8),
+              ),
             ),
           ),
         TextFormField(
@@ -70,15 +72,15 @@ class _CustomInputFieldState extends State<CustomInputField> {
                 : null,
             suffixIcon: widget.isPassword
                 ? IconButton(
-              icon: Icon(
-                _obscureText ? Icons.visibility_off : Icons.visibility,
-              ),
-              onPressed: () {
-                setState(() {
-                  _obscureText = !_obscureText;
-                });
-              },
-            )
+                    icon: Icon(
+                      _obscureText ? Icons.visibility_off : Icons.visibility,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                  )
                 : widget.suffixIcon != null
                 ? Icon(widget.suffixIcon)
                 : null,
