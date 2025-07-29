@@ -8,7 +8,9 @@ import 'package:makachi_connect/res/components/custom_appbar.dart';
 import 'package:makachi_connect/res/components/custom_blur_bg_container.dart';
 import 'package:makachi_connect/res/components/custom_network_image.dart';
 import 'package:makachi_connect/res/components/ellipsis_scaffold.dart';
+import 'package:makachi_connect/view/profile_view/change_password/change_password_view.dart';
 import 'package:makachi_connect/view/profile_view/edit_profile/edit_profile_view.dart';
+import 'package:makachi_connect/view/profile_view/notifications/notifications_view.dart';
 
 import '../../res/app_colors.dart';
 import '../../res/components/custom_text.dart';
@@ -84,13 +86,17 @@ class _ProfileViewState extends State<ProfileView> {
                   card(
                     icon: AppIcons.key,
                     text: "Change Password",
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => ChangePasswordView());
+                    },
                   ),
                   SizedBox(height: 10),
                   card(
                     icon: AppIcons.notification,
                     text: "Notifications",
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => NotificationsView());
+                    },
                   ),
                   SizedBox(height: 10),
                   card(icon: AppIcons.about, text: "About Us", onTap: () {}),
