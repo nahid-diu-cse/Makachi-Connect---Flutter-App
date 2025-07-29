@@ -12,6 +12,7 @@ class AppColors {
 
   //All colors
   static const Color whiteColor = Color(0xFFFFFFFF);
+  static const Color blackColor = Color(0xFF000000);
   static const Color grayColor700 = Color(0xFF616161);
   static Color cardColor = AppColors.secondaryColor.withOpacity(.05);
   static Color ellipsisColor = Color(0xFFE20101);

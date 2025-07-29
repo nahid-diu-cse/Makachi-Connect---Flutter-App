@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:makachi_connect/res/app_colors.dart';
 import 'package:makachi_connect/res/app_icons.dart';
 import 'package:makachi_connect/res/app_paddings.dart';
@@ -9,6 +10,7 @@ import 'package:makachi_connect/res/components/custom_appbar.dart';
 import 'package:makachi_connect/res/components/custom_blur_bg_container.dart';
 import 'package:makachi_connect/res/components/custom_network_image.dart';
 import 'package:makachi_connect/res/components/custom_text.dart';
+import 'package:makachi_connect/view/ticket_view/booking_ticket_view.dart';
 import 'package:makachi_connect/widget/address_widget.dart';
 
 class TicketDetailsView extends StatefulWidget {
@@ -145,7 +147,9 @@ class _TicketDetailsViewState extends State<TicketDetailsView> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: CustomButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => BookingTicketView());
+                      },
                       text: "Book Now",
                       width: double.infinity,
                     ),

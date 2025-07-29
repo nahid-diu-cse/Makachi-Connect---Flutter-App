@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -8,9 +10,13 @@ import 'package:makachi_connect/res/components/custom_appbar.dart';
 import 'package:makachi_connect/res/components/custom_blur_bg_container.dart';
 import 'package:makachi_connect/res/components/custom_network_image.dart';
 import 'package:makachi_connect/res/components/ellipsis_scaffold.dart';
+import 'package:makachi_connect/view/auth_view/login_view.dart';
+import 'package:makachi_connect/view/profile_view/about_view.dart';
 import 'package:makachi_connect/view/profile_view/change_password/change_password_view.dart';
 import 'package:makachi_connect/view/profile_view/edit_profile/edit_profile_view.dart';
 import 'package:makachi_connect/view/profile_view/notifications/notifications_view.dart';
+import 'package:makachi_connect/view/profile_view/privacy_view.dart';
+import 'package:makachi_connect/view/profile_view/terms_view.dart';
 
 import '../../res/app_colors.dart';
 import '../../res/components/custom_text.dart';
@@ -23,6 +29,56 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  void _showSignOutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return Stack(
+          children: [
+            GestureDetector(
+              onTap: () => Get.back(),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10.0),
+                // You can adjust the blur strength here
+                child: Container(
+                  color: Colors.black.withOpacity(
+                    0.3,
+                  ), // Optional: dim the background
+                ),
+              ),
+            ),
+            AlertDialog(
+              backgroundColor: AppColors.whiteColor.withOpacity(.05),
+              elevation: 5,
+              title: CustomText(text: 'Do you want to sign out your profile?'),
+              alignment: Alignment.center,
+              actionsAlignment: MainAxisAlignment.center,
+              actions: [
+                CustomButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  text: "No",
+                ),
+                CustomButton(
+                  onPressed: () {
+                    Get.offAll(() => LoginView());
+                  },
+
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+
+                  text: "Yes",
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -99,25 +155,37 @@ class _ProfileViewState extends State<ProfileView> {
                     },
                   ),
                   SizedBox(height: 10),
-                  card(icon: AppIcons.about, text: "About Us", onTap: () {}),
+                  card(
+                    icon: AppIcons.about,
+                    text: "About Us",
+                    onTap: () {
+                      Get.to(() => AboutView());
+                    },
+                  ),
                   SizedBox(height: 10),
                   card(
                     icon: AppIcons.privacy,
                     text: "Privacy Policy",
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => PrivacyView());
+                    },
                   ),
                   SizedBox(height: 10),
                   card(
                     icon: AppIcons.terms,
                     text: "Terms of Services",
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => TermsView());
+                    },
                   ),
 
                   SizedBox(height: 30),
 
                   CustomButton(
                     width: width,
-                    onPressed: () {},
+                    onPressed: () {
+                      _showSignOutDialog(context);
+                    },
                     text: "Log Out",
                     trailingIcon: Icons.logout,
                     iconSize: 25,
