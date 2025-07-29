@@ -83,7 +83,7 @@ class _HomeViewState extends State<HomeView> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomText(
-                          text: "Featured Vanues",
+                          text: "Featured Venues",
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         CustomTextButton(
