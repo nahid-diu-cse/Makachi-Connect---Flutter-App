@@ -19,6 +19,7 @@ class CompletedWidget extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.only(bottom: index == 4 ? 0 : 16.0),
             child: BookingWidget(
+              bookingStatus: "completed",
               hgt: height * .3,
               wdt: width,
               isAllVenueList: true,

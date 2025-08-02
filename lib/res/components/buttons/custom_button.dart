@@ -26,7 +26,8 @@ class CustomButton extends StatelessWidget {
   final Color? iconColor;
   final double? iconSize;
   final MainAxisAlignment alignment;
-  final IconData? trailingIcon; // New trailing icon property
+  final IconData? trailingIcon;
+  final bool? borderSide;
 
   const CustomButton({
     super.key,
@@ -46,7 +47,8 @@ class CustomButton extends StatelessWidget {
     this.iconColor,
     this.iconSize,
     this.alignment = MainAxisAlignment.center,
-    this.trailingIcon, // Initialize the trailing icon
+    this.trailingIcon,
+    this.borderSide = false, // Initialize the trailing icon
   });
 
   Widget _buildImage() {
@@ -101,6 +103,9 @@ class CustomButton extends StatelessWidget {
         backgroundColor: backgroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius.r),
+          side: borderSide!
+              ? BorderSide(color: AppColors.whiteColor.withOpacity(.3))
+              : BorderSide.none,
         ),
         padding: effectivePadding,
       ),

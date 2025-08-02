@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:makachi_connect/res/app_paddings.dart';
-import 'package:makachi_connect/res/components/custom_text.dart';
 
 import '../../../widget/booking_widget.dart';
 
@@ -19,6 +18,7 @@ class ScheduledWidget extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.only(bottom: index == 4 ? 0 : 16.0),
             child: BookingWidget(
+              bookingStatus: "scheduled",
               hgt: height * .3,
               wdt: width,
               isAllVenueList: true,

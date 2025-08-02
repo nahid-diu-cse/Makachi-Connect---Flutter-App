@@ -14,6 +14,7 @@ class CustomInputField extends StatefulWidget {
   final void Function(String)? onChanged;
   final bool readOnly;
   final bool enabled;
+  final int? maxLines;
 
   const CustomInputField({
     super.key,
@@ -28,6 +29,7 @@ class CustomInputField extends StatefulWidget {
     this.onChanged,
     this.readOnly = false,
     this.enabled = true,
+    this.maxLines = 1,
   });
 
   @override
@@ -66,6 +68,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
           onChanged: widget.onChanged,
           readOnly: widget.readOnly,
           enabled: widget.enabled,
+          maxLines: widget.maxLines,
           decoration: InputDecoration(
             prefixIcon: widget.prefixIcon != null
                 ? Icon(widget.prefixIcon)
