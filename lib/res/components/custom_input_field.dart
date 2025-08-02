@@ -55,7 +55,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             padding: const EdgeInsets.only(bottom: 8.0),
             child: CustomText(
               text: widget.label,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 color: AppColors.pTextColor.withOpacity(.8),
               ),
             ),
@@ -88,6 +88,9 @@ class _CustomInputFieldState extends State<CustomInputField> {
                 ? Icon(widget.suffixIcon)
                 : null,
             hintText: widget.hintText,
+            hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              color: AppColors.pTextColor.withOpacity(.4),
+            ),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 12,

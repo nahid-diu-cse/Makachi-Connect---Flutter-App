@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:makachi_connect/res/app_colors.dart';
 import 'package:makachi_connect/res/app_paddings.dart';
 import 'package:makachi_connect/res/components/buttons/custom_button.dart';
@@ -25,6 +26,15 @@ class _ReviewViewState extends State<ReviewView> {
     return EllipsisScaffold(
       body: Stack(
         children: [
+          GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+              Get.back(); // dismiss the modal/view
+            },
+            child: Container(
+              color: Colors.transparent, // Necessary for GestureDetector to work
+            ),
+          ),
           Positioned(
             bottom: 0,
             left: 0,
@@ -73,7 +83,9 @@ class _ReviewViewState extends State<ReviewView> {
                                 CustomText(
                                   text: "Grand Elegance Hall",
                                   maxLines: 1,
-                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.bodyMedium,
                                 ),
                                 SizedBox(height: 10),
                                 iconText(Icons.wallet_giftcard, "\$50"),
@@ -125,7 +137,11 @@ class _ReviewViewState extends State<ReviewView> {
                     hintText: "Enter here",
                   ),
                   SizedBox(height: 40),
-                  CustomButton(onPressed: () {}, text: "Submit", width: width),
+                  CustomButton(
+                    onPressed: () {},
+                    text: "Submit",
+                    width: width,
+                  ),
                   SizedBox(height: 30),
                 ],
               ),
