@@ -17,6 +17,8 @@ import 'package:makachi_connect/view/profile_view/edit_profile/edit_profile_view
 import 'package:makachi_connect/view/profile_view/notifications/notifications_view.dart';
 import 'package:makachi_connect/view/profile_view/privacy_view.dart';
 import 'package:makachi_connect/view/profile_view/terms_view.dart';
+import 'package:makachi_connect/view/vendor_view/v_profile_view/v_makachi_premium_view.dart';
+import 'package:makachi_connect/view/vendor_view/v_profile_view/v_rating_review_view.dart';
 
 import '../../res/app_colors.dart';
 import '../../res/components/custom_text.dart';
@@ -144,6 +146,21 @@ class _ProfileViewState extends State<ProfileView> {
                     text: "Change Password",
                     onTap: () {
                       Get.to(() => ChangePasswordView());
+                    },
+                  ),
+                  SizedBox(height: 10),
+                  card(
+                    icon: AppIcons.message,
+                    text: "Rating & Reviews",
+                    onTap: () {
+                      Get.to(() => VRatingReviewView());
+                    },
+                  ),
+                  SizedBox(height: 10),card(
+                    icon: AppIcons.crown,
+                    text: "Makachi Premium",
+                    onTap: () {
+                      Get.to(() => VMakachiPremiumView());
                     },
                   ),
                   SizedBox(height: 10),
