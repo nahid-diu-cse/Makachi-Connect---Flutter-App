@@ -6,6 +6,10 @@ import 'package:makachi_connect/view/explore_view/explore_view.dart';
 import 'package:makachi_connect/view/home_view/home_view.dart';
 import 'package:makachi_connect/view/profile_view/profile_view.dart';
 import 'package:makachi_connect/view/ticket_view/ticket_view.dart';
+import 'package:makachi_connect/view/vendor_view/v_earning_view/v_earning_view.dart';
+import 'package:makachi_connect/view/vendor_view/v_listing_view/v_listing_view.dart';
+
+import '../vendor_view/v_home_view/v_home_view.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -19,10 +23,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   // List of screens for each bottom navigation item
   final List<Widget> _screens = [
-    const HomeView(),
+    VHomeView(),
+    // const HomeView(),
     const ExploreView(),
-    const BookingView(),
-    const TicketView(),
+    // const BookingView(),
+    VListingView(),
+    // const TicketView(),
+    VEarningView(),
     const ProfileView(),
   ];
 

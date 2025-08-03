@@ -20,6 +20,9 @@ class AppIcons {
   static final String user = "assets/icons_svg/user.svg";
   static final String about = "assets/icons_svg/about.svg";
 
+
+  //PNG icons
   static final String searchBarIcon = "assets/icons_png/search_bar_icon.png";
   static final String heartIcon = "assets/icons_png/heart.png";
+  static final String dotIcon = "assets/icons_png/dot.png";
 }
