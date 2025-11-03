@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:makachi_connect/res/components/buttons/custom_text_button.dart';
+import 'package:makachi_connect/view/auth_view/login_view.dart';
+import 'package:makachi_connect/view/auth_view/sign_up_view.dart';
 import 'package:makachi_connect/view/bottom_nav_bar/bottom_nav_bar.dart';
 
 import '../../res/app_colors.dart';
@@ -86,11 +88,11 @@ class WelcomeView extends StatelessWidget {
                             textColor: AppColors.pTextColor,
                             width: width,
                             onPressed: () {
-                              // Get.to(
-                              //   ObThreeView(),
-                              //   transition: Transition.rightToLeft,
-                              //   duration: Duration(milliseconds: 500),
-                              // );
+                              Get.to(
+                                LoginView(),
+                                transition: Transition.rightToLeft,
+                                duration: Duration(milliseconds: 500),
+                              );
                             },
                             text: "Login",
                           ),
@@ -100,11 +102,11 @@ class WelcomeView extends StatelessWidget {
                             backgroundColor: AppColors.secondaryColor,
                             width: width,
                             onPressed: () {
-                              // Get.to(
-                              //   ObThreeView(),
-                              //   transition: Transition.rightToLeft,
-                              //   duration: Duration(milliseconds: 500),
-                              // );
+                              Get.to(
+                                SignUpView(),
+                                transition: Transition.rightToLeft,
+                                duration: Duration(milliseconds: 500),
+                              );
                             },
                             text: "Sign Up",
                           ),

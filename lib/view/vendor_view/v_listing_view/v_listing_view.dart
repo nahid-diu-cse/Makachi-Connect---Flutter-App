@@ -9,8 +9,10 @@ import 'package:makachi_connect/res/app_paddings.dart';
 import 'package:makachi_connect/res/components/buttons/custom_button.dart';
 import 'package:makachi_connect/res/components/custom_text.dart';
 import 'package:makachi_connect/res/components/ellipsis_scaffold.dart';
-import 'package:makachi_connect/view/vendor_view/v_add_view/v_add_view.dart';
 import 'package:makachi_connect/view/vendor_view/v_listing_view/widget/listing_widget.dart';
+
+import '../v_add/v_add_view.dart';
+import '../v_add/v_update_view.dart';
 
 class VListingView extends StatefulWidget {
   const VListingView({super.key});
@@ -73,8 +75,7 @@ class _VListingViewState extends State<VListingView> {
                                 icon: CupertinoIcons.building_2_fill,
                                 title: "Add New Venue",
                                 onTap: () {
-                                  Get.to(()=>VAddView(title: "Venue"));
-
+                                  Get.to(() => VAddView(title: "Venue"));
                                 },
                               ),
                             ),
@@ -84,8 +85,7 @@ class _VListingViewState extends State<VListingView> {
                                 icon: Icons.local_hospital,
                                 title: "Add New Event",
                                 onTap: () {
-                                  Get.to(()=>VAddView(title: "Event"));
-
+                                  Get.to(() => VAddView(title: "Event"));
                                 },
                               ),
                             ),
@@ -95,7 +95,7 @@ class _VListingViewState extends State<VListingView> {
                                 icon: CupertinoIcons.tickets,
                                 title: "Add Event Ticket",
                                 onTap: () {
-                                  Get.to(()=>VAddView(title: "Ticket"));
+                                  Get.to(() => VAddView(title: "Ticket"));
                                 },
                               ),
                             ),
@@ -132,7 +132,11 @@ class _VListingViewState extends State<VListingView> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 12.0),
-                    child: ListingWidget(),
+                    child: ListingWidget(
+                      onUpdate: () {
+                        Get.to(() => VUpdateView(title: "Venue"));
+                      },
+                    ),
                   );
                 },
               ),

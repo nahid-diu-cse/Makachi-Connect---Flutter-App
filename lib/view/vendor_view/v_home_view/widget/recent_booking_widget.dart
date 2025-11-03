@@ -68,7 +68,7 @@ class _RecentBookingWidgetState extends State<RecentBookingWidget> {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   SizedBox(height: 8),
-                  iconText(Icons.wallet_giftcard, "\$$amount"),
+                  iconText(Icons.wallet, "\$$amount"),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -107,7 +107,7 @@ class _RecentBookingWidgetState extends State<RecentBookingWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(icon, color: AppColors.whiteColor.withOpacity(.5)),
+        Icon(icon, color: AppColors.whiteColor.withOpacity(.5), size: 18),
         SizedBox(width: 5),
         CustomText(
           overflow: TextOverflow.ellipsis,

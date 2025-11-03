@@ -150,10 +150,11 @@ class _TicketDetailsViewState extends State<TicketDetailsView> {
                       onPressed: () {
                         Get.to(() => BookingTicketView());
                       },
-                      text: "Book Now",
+                      text: "Buy Ticket",
                       width: double.infinity,
                     ),
                   ),
+                  SizedBox(height: 20),
                 ],
               ),
             ),

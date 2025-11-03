@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
 import 'package:makachi_connect/res/app_theme.dart';
-import 'package:makachi_connect/view/auth_view/login_view.dart';
-import 'package:makachi_connect/view/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:makachi_connect/view/splash_view.dart';
+
+import 'view_model/controller/role_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,9 +20,12 @@ class MyApp extends StatelessWidget {
       builder: (child, context) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
+          initialBinding: BindingsBuilder(() {
+            Get.put(RoleController());
+          }),
           title: 'Makachi Connect',
           theme: AppTheme().themeData,
-          home: LoginView(),
+          home: SplashView(),
         );
       },
     );

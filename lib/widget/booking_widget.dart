@@ -6,9 +6,6 @@ import 'package:makachi_connect/view/booking_view/cancellation_reason_view.dart'
 import 'package:makachi_connect/view/booking_view/review_view.dart';
 
 import '../res/app_colors.dart';
-import '../res/app_icons.dart';
-import '../res/app_paddings.dart';
-import '../res/components/custom_blur_bg_container.dart';
 import '../res/components/custom_network_image.dart';
 import '../res/components/custom_text.dart';
 import '../view/home_view/featured_venues/venue_details_view.dart';
@@ -115,7 +112,10 @@ class _BookingWidgetState extends State<BookingWidget> {
                               ? 'Completed'
                               : 'Cancelled',
                           style: Theme.of(context).textTheme.bodySmall!
-                              .copyWith(color: AppColors.pTextColor),
+                              .copyWith(
+                                color: AppColors.pTextColor,
+                                fontSize: 11,
+                              ),
                         ),
                       ),
                     ],
@@ -147,7 +147,7 @@ class _BookingWidgetState extends State<BookingWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(icon, color: AppColors.whiteColor.withOpacity(.5)),
+        Icon(icon, color: AppColors.whiteColor.withOpacity(.5), size: 20),
         SizedBox(width: 5),
         CustomText(
           overflow: TextOverflow.ellipsis,

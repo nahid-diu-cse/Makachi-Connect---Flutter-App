@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:makachi_connect/res/app_paddings.dart';
-import 'package:makachi_connect/res/components/custom_appbar.dart';
 import 'package:makachi_connect/res/components/ellipsis_scaffold.dart';
 import 'package:makachi_connect/view/booking_view/widget/cancel_widget.dart';
 import 'package:makachi_connect/view/booking_view/widget/completed_widget.dart';
@@ -40,12 +38,19 @@ class _BookingViewState extends State<BookingView>
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 20),
-            // TabBar with custom text for "TODAY" and "UPCOMING"
+            CustomText(
+              text: 'Booking',
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+            SizedBox(height: 8),
             TabBar(
               controller: _tabController,
               tabs: [
-                CustomText(text: "Scheduled"),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomText(text: "Scheduled"),
+                ),
                 CustomText(text: "Completed"),
                 CustomText(text: "Cancel"),
               ],

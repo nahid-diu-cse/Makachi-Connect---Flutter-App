@@ -19,13 +19,11 @@ class _TicketViewState extends State<TicketView>
   @override
   void initState() {
     super.initState();
-    // Initialize TabController with two tabs
     _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
   void dispose() {
-    // Dispose TabController to avoid memory leaks
     _tabController.dispose();
     super.dispose();
   }
@@ -36,18 +34,27 @@ class _TicketViewState extends State<TicketView>
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 20),
-            // TabBar with custom text for "TODAY" and "UPCOMING"
+            CustomText(
+              text: 'Tickets',
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+            SizedBox(height: 16),
             TabBar(
               controller: _tabController,
+
               tabs: [
-                CustomText(text: "TODAY"),
-                CustomText(text: "UPCOMING"),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomText(text: "TODAY"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomText(text: "UPCOMING"),
+                ),
               ],
               indicatorColor: AppColors.whiteColor.withOpacity(.5),
             ),
-
-            // TabBarView to display content based on the selected tab
             Expanded(
               child: TabBarView(
                 controller: _tabController,

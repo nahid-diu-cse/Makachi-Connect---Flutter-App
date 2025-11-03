@@ -1,16 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../res/app_colors.dart';
 import '../res/app_icons.dart';
 import '../res/app_images.dart';
-import '../res/components/buttons/custom_text_button.dart';
 import '../res/components/custom_network_image.dart';
 import '../res/components/custom_text.dart';
 
 class TicketWidget extends StatefulWidget {
-  const TicketWidget({super.key});
+  const TicketWidget({super.key, this.type});
+  final String? type;
 
   @override
   State<TicketWidget> createState() => _TicketWidgetState();
@@ -115,6 +114,7 @@ class _TicketWidgetState extends State<TicketWidget> {
                   ),
                 ],
               ),
+              Spacer(),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
@@ -122,7 +122,7 @@ class _TicketWidgetState extends State<TicketWidget> {
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: CustomText(
-                  text: "Premium ticket x1",
+                  text: widget.type ?? "Premium ticket x1",
                   style: Theme.of(
                     context,
                   ).textTheme.bodyMedium!.copyWith(fontSize: 12),

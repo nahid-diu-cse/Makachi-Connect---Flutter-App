@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:makachi_connect/res/app_paddings.dart';
@@ -6,6 +5,7 @@ import 'package:makachi_connect/res/components/custom_appbar.dart';
 import 'package:makachi_connect/res/components/custom_check_box.dart';
 import 'package:makachi_connect/res/components/ellipsis_scaffold.dart';
 import 'package:makachi_connect/view/auth_view/verification_view.dart';
+import 'package:makachi_connect/view_model/controller/role_controller.dart';
 
 import '../../res/app_colors.dart';
 import '../../res/app_icons.dart';
@@ -27,6 +27,21 @@ class SignUpView extends StatefulWidget {
 class _SignUpViewState extends State<SignUpView> {
   bool isUser = true;
   bool isVendor = false;
+
+  RoleController roleController = Get.find<RoleController>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (roleController.role == Role.user) {
+      isUser = true;
+      isVendor = false;
+    } else {
+      isUser = false;
+      isVendor = true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -217,6 +232,7 @@ class _SignUpViewState extends State<SignUpView> {
           onChanged: (value) {
             isUser = value;
             isVendor = false;
+            roleController.role = Role.user;
             setState(() {});
           },
           label: "User",
@@ -236,6 +252,7 @@ class _SignUpViewState extends State<SignUpView> {
           onChanged: (value) {
             isUser = false;
             isVendor = value;
+            roleController.role = Role.vendor;
             setState(() {});
           },
           label: "Vendor",

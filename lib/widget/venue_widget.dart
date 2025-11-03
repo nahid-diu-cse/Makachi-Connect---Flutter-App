@@ -35,7 +35,8 @@ class _VenueWidgetState extends State<VenueWidget> {
       child: Stack(
         children: [
           CustomNetworkImage(
-            imageUrl: "imageUrl",
+            imageUrl:
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1h0NgYtyguYaum66wEn648niatTh_ysM_I2q9AYPMdK_epSdlHHaY38lKP4I9jijNs_M&usqp=CAU",
             width: widget.wdt ?? width * .6,
             height: widget.hgt ?? height * .2,
             borderRadius: BorderRadius.circular(15),

@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:makachi_connect/res/app_icons.dart';
 
 import '../../../../res/app_colors.dart';
@@ -9,15 +7,14 @@ import '../../../../res/components/custom_network_image.dart';
 import '../../../../res/components/custom_text.dart';
 
 class ListingWidget extends StatefulWidget {
-  const ListingWidget({super.key});
+  const ListingWidget({super.key, required this.onUpdate});
+  final VoidCallback onUpdate;
 
   @override
   State<ListingWidget> createState() => _ListingWidgetState();
 }
 
 class _ListingWidgetState extends State<ListingWidget> {
-
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -77,7 +74,7 @@ class _ListingWidgetState extends State<ListingWidget> {
                         Row(
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: widget.onUpdate,
                               child: Icon(
                                 Icons.edit,
                                 color: AppColors.whiteColor,
@@ -149,6 +146,4 @@ class _ListingWidgetState extends State<ListingWidget> {
       ],
     );
   }
-
-
 }

@@ -34,168 +34,143 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
     return EllipsisScaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(AppPaddings.bodyPadding),
-            child: Column(
-              children: [
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomText(
-                              text: "Hi Chine,",
-                              style: Theme.of(context).textTheme.titleMedium!
-                                  .copyWith(color: AppColors.pTextColor),
-                            ),
-                            Row(
-                              children: [
-                                SvgPicture.asset(AppIcons.locationSvg),
-                                SizedBox(width: 5.w),
-                                CustomText(
-                                  text: "137, Rose Avenue, New Work",
-                                  style: Theme.of(context).textTheme.bodySmall!
-                                      .copyWith(color: AppColors.pTextColor),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        ClipOval(
-                          child: CustomNetworkImage(
-                            imageUrl: "imageUrl",
-                            height: width * .15,
-                            width: width * .15,
+          padding: EdgeInsets.all(AppPaddings.bodyPadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // ---------- Header ----------
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(
+                        text: "Hi Chine,",
+                        style: Theme.of(context).textTheme.titleMedium!
+                            .copyWith(color: AppColors.pTextColor),
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        children: [
+                          SvgPicture.asset(AppIcons.locationSvg),
+                          SizedBox(width: 5.w),
+                          CustomText(
+                            text: "137, Rose Avenue, New Work",
+                            style: Theme.of(context).textTheme.bodySmall!
+                                .copyWith(color: AppColors.pTextColor),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                    ],
+                  ),
+                  ClipOval(
+                    child: CustomNetworkImage(
+                      imageUrl:
+                          "https://img.freepik.com/free-photo/type-entertainment-complex-popular-resort-with-pools-water-parks-turkey-with-more-than-5-million-visitors-year-amara-dolce-vita-luxury-hotel-resort-tekirova-kemer_146671-18728.jpg?semt=ais_hybrid&w=740&q=80",
+                      height: width * .15,
+                      width: width * .15,
                     ),
-                    SizedBox(height: 16),
-                    CustomSearchBar(hintText: "Search Items...."),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomText(
-                          text: "Featured Venues",
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        CustomTextButton(
-                          text: "View All",
-                          onPressed: () {
-                            Get.to(
-                              FeaturedVenuesView(),
-                              transition: Transition.rightToLeft,
-                              duration: Duration(milliseconds: 500),
-                            );
-                          },
-                          textStyle: Theme.of(context).textTheme.titleSmall
-                              ?.copyWith(color: AppColors.primaryColor),
-                        ),
-                      ],
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(
-                          5,
-                          (index) => Padding(
-                            padding: EdgeInsets.only(
-                              right: index == 4 ? 0 : 12.w,
-                            ),
-                            child: GestureDetector(
-                              onTap: () {
-                                Get.to(() => VenueDetailsView());
-                              },
-                              child: VenueWidget(),
-                            ),
-                          ),
-                        ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 16),
+              CustomSearchBar(hintText: "Search Items...."),
+              SizedBox(height: 16),
+
+              // ---------- Featured Venues ----------
+              sectionHeader(
+                title: "Featured Venues",
+                onViewAll: () {
+                  Get.to(
+                    () => const FeaturedVenuesView(),
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(milliseconds: 500),
+                  );
+                },
+              ),
+              SizedBox(height: 8),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(
+                    5,
+                    (index) => Padding(
+                      padding: EdgeInsets.only(right: index == 4 ? 0 : 12.w),
+                      child: GestureDetector(
+                        onTap: () => Get.to(() => const VenueDetailsView()),
+                        child: const VenueWidget(),
                       ),
                     ),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomText(
-                          text: "Categories",
-                          style: Theme.of(context).textTheme.labelLarge,
-                          textAlign: TextAlign.start,
-                        ),
-                        CustomTextButton(
-                          text: "",
-                          onPressed: () {},
-                          textStyle: Theme.of(context).textTheme.titleSmall
-                              ?.copyWith(color: AppColors.primaryColor),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () => Get.to(() => VenuesView()),
-                            child: categoryWidget("Venue", AppImages.venue),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () => Get.to(() => EventsView()),
-                            child: categoryWidget("Event", AppImages.event),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomText(
-                          text: "Tickets",
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        CustomTextButton(
-                          text: "View All",
-                          onPressed: () => Get.to(() => FeaturedTicketsView()),
-                          textStyle: Theme.of(context).textTheme.titleSmall
-                              ?.copyWith(color: AppColors.primaryColor),
-                        ),
-                      ],
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(
-                          5,
-                          (index) => Padding(
-                            padding: EdgeInsets.only(
-                              right: index == 4 ? 0 : 12.w,
-                            ),
-                            child: GestureDetector(
-                              onTap: () => Get.to(() => TicketDetailsView()),
-                              child: TicketWidget(),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+
+              SizedBox(height: 16),
+
+              // ---------- Categories ----------
+              CustomText(
+                text: "Categories",
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+              SizedBox(height: 8),
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => Get.to(() => const VenuesView()),
+                      child: categoryWidget("Venue", AppImages.venue),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => Get.to(() => const EventsView()),
+                      child: categoryWidget("Event", AppImages.event),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 16),
+
+              // ---------- Tickets ----------
+              sectionHeader(
+                title: "Tickets",
+                onViewAll: () => Get.to(() => const FeaturedTicketsView()),
+              ),
+              SizedBox(height: 8),
+              SizedBox(
+                height: height * 0.20,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  separatorBuilder: (_, __) => SizedBox(width: 12.w),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () => Get.to(() => const TicketDetailsView()),
+                      child: SizedBox(
+                        width: width * 0.90,
+                        child: const TicketWidget(type: 'View Ticket'),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
+  // ---------- Helper Widget ----------
   Widget categoryWidget(String txt, String imgUrl) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -216,7 +191,7 @@ class _HomeViewState extends State<HomeView> {
           CustomBlurBgContainer(
             blurSigma: 1,
             width: width,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             body: Center(
               child: CustomText(
                 text: txt,
@@ -228,6 +203,26 @@ class _HomeViewState extends State<HomeView> {
           ),
         ],
       ),
+    );
+  }
+
+  // ---------- Reusable Section Header ----------
+  Widget sectionHeader({
+    required String title,
+    required VoidCallback onViewAll,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        CustomText(text: title, style: Theme.of(context).textTheme.titleMedium),
+        CustomTextButton(
+          text: "View All",
+          onPressed: onViewAll,
+          textStyle: Theme.of(
+            context,
+          ).textTheme.titleSmall?.copyWith(color: AppColors.primaryColor),
+        ),
+      ],
     );
   }
 }

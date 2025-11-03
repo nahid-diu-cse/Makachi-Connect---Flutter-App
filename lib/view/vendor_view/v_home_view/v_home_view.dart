@@ -11,6 +11,8 @@ import 'package:makachi_connect/res/components/ellipsis_scaffold.dart';
 import 'package:makachi_connect/view/vendor_view/v_home_view/recent_booking_view.dart';
 import 'package:makachi_connect/view/vendor_view/v_home_view/widget/recent_booking_widget.dart';
 
+import '../v_add/v_add_view.dart';
+
 class VHomeView extends StatefulWidget {
   const VHomeView({super.key});
 
@@ -70,98 +72,113 @@ class _VHomeViewState extends State<VHomeView> {
                 ),
               ],
             ),
-            SizedBox(height: 20.h),
-            Align(
-              alignment: AlignmentDirectional.centerStart,
-              child: CustomText(
-                text: "Dashboard",
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ),
-            SizedBox(height: 20.h),
-            Row(
-              children: [
-                Expanded(
-                  child: totalCard(
-                    title: "Total Booking",
-                    amount: '50',
-                    rating: '4',
-                  ),
-                ),
-                SizedBox(width: 12.w),
-                Expanded(
-                  child: totalCard(
-                    title: "Total Revenue",
-                    amount: '100',
-                    rating: '4',
-                  ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 10.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomText(
-                  text: "Recent Booking",
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                CustomTextButton(
-                  text: "View All",
-                  onPressed: () {
-                    Get.to(() => RecentBookingView());
-                  },
-                  textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: AppColors.primaryColor,
-                  ),
-                ),
-              ],
-            ),
+            SizedBox(height: 8.h),
             Expanded(
-              child: ListView.builder(
-                itemCount: 2,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 12.0),
-                    child: RecentBookingWidget(),
-                  );
-                },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 8.h),
+                    Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: CustomText(
+                        text: "Dashboard",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: totalCard(
+                            title: "Total Booking",
+                            amount: '50',
+                            rating: '4',
+                          ),
+                        ),
+                        SizedBox(width: 12.w),
+                        Expanded(
+                          child: totalCard(
+                            title: "Total Revenue",
+                            amount: '100',
+                            rating: '4',
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomText(
+                          text: "Recent Booking",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        CustomTextButton(
+                          text: "View All",
+                          onPressed: () {
+                            Get.to(() => RecentBookingView());
+                          },
+                          textStyle: Theme.of(context).textTheme.titleSmall!
+                              .copyWith(color: AppColors.primaryColor),
+                        ),
+                      ],
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      primary: false,
+                      itemCount: 2,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 12.0),
+                          child: RecentBookingWidget(),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 10.h),
+                    Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: CustomText(
+                        text: "Quick Actions",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                    SizedBox(height: 10.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: quickActionCard(
+                            icon: CupertinoIcons.building_2_fill,
+                            title: "Add New Venue",
+                            onTap: () {
+                              Get.to(() => VAddView(title: "Venue"));
+                            },
+                          ),
+                        ),
+                        SizedBox(width: 10.w),
+                        Expanded(
+                          child: quickActionCard(
+                            icon: Icons.local_hospital,
+                            title: "Add New Event",
+                            onTap: () {
+                              Get.to(() => VAddView(title: "Event"));
+                            },
+                          ),
+                        ),
+                        SizedBox(width: 10.w),
+                        Expanded(
+                          child: quickActionCard(
+                            icon: CupertinoIcons.tickets,
+                            title: "Add Event Ticket",
+                            onTap: () {
+                              Get.to(() => VAddView(title: "Ticket"));
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 10.h),
-            Align(
-              alignment: AlignmentDirectional.centerStart,
-              child: CustomText(
-                text: "Quick Actions",
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ),
-            SizedBox(height: 10.h),
-
-            Row(
-              children: [
-                Expanded(
-                  child: quickActionCard(
-                    icon: CupertinoIcons.building_2_fill,
-                    title: "Add New Venue",
-                  ),
-                ),
-                SizedBox(width: 10.w),
-                Expanded(
-                  child: quickActionCard(
-                    icon: Icons.local_hospital,
-                    title: "Add New Event",
-                  ),
-                ),
-                SizedBox(width: 10.w),
-                Expanded(
-                  child: quickActionCard(
-                    icon: CupertinoIcons.tickets,
-                    title: "Add Event Ticket",
-                  ),
-                ),
-              ],
             ),
           ],
         ),
@@ -169,31 +186,38 @@ class _VHomeViewState extends State<VHomeView> {
     );
   }
 
-  Widget quickActionCard({required IconData icon, required String title}) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor.withOpacity(.05),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(AppPaddings.bodyPadding),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 30,
-              backgroundColor: AppColors.whiteColor.withOpacity(.05),
-              child: Icon(icon, size: 30, color: AppColors.primaryColor),
-            ),
-            SizedBox(height: 10.h),
-            CustomText(
-              text: title,
-              maxLines: 2,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ],
+  Widget quickActionCard({
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor.withOpacity(.05),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(AppPaddings.bodyPadding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 30,
+                backgroundColor: AppColors.whiteColor.withOpacity(.05),
+                child: Icon(icon, size: 30, color: AppColors.primaryColor),
+              ),
+              SizedBox(height: 10.h),
+              CustomText(
+                text: title,
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ],
+          ),
         ),
       ),
     );
